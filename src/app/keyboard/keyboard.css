@@ -1,0 +1,78 @@
+.keyboard {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 15px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+}
+
+.keyboard-row {
+  display: flex;
+  flex-direction: row;
+  gap:0.2rem;
+  margin-bottom: 5px;
+  justify-content: space-around;
+}
+
+.key-button {
+  width: auto;
+  height: auto;
+  border:none;
+  background-color: #cfd9db;
+  font-size: 1.4rem;
+  padding: 0.4rem 0.6rem;
+  margin:0.04rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  cursor: pointer;
+  font-family: "Raleway","Urbanist","Montserrat Alternates", sans-serif;
+  border-radius: 2px;
+}
+
+.key-button.enter {
+  font-size: 0.8rem;
+
+}
+
+@media screen and (min-width: 850px) {
+  .keyboard {
+    width: 600px;
+    margin-bottom: 13px;
+    position: fixed;
+    bottom: 0;
+    left: calc(50% - 300px);
+  }
+  .key-button {
+    font-size: 2rem;
+    padding: 0.2rem 0.9rem;
+    margin:0.1rem 0.4rem;
+    font-family: 'Krub', sans-serif;
+    font-weight: 600;
+  }
+  .key-button.enter {
+    font-size: 1rem;
+
+  }
+}
+
+
+
+.possible-match {
+  color: #4f96c5;
+  transition: ease-in-out;
+}
+.sure-match {
+  background-color:  rgb(31, 224, 144);
+  transition: ease-in-out;
+  color: white;
+}
+.rejected-letter {
+  background-color: #313131;
+  border-color: #291f1e;
+  color: rgb(133, 133, 133);
+  text-decoration: line-through;
+  transition: ease-in-out;
+}

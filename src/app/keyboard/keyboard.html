@@ -1,0 +1,26 @@
+<div class="keyboard">
+    @for (row of rows; track row){
+        <div class="keyboard-row">
+            @for (key of row; track $index){
+                <button class="key-button" (click)="onKeyClick(key)"
+                [class.possible-match]="possibleLetters().has(key.toUpperCase())"
+                [class.sure-match]="sureLetters().has(key.toUpperCase())"
+                [class.rejected-letter]="rejectedLetters().has(key.toUpperCase())"
+                [class.enter]="key.toUpperCase() === 'ENTER'"
+                >
+                {{ key }}</button>
+            }
+        </div>
+    }
+    @for (row of czechKeys; track row){
+        <div class="keyboard-row">
+            @for (key of row; track $index){
+                <button class="key-button" (click)="onKeyClick(key)"
+                [class.possible-match]="possibleLetters().has(key.toUpperCase())"
+                [class.sure-match]="sureLetters().has(key.toUpperCase())"
+                [class.rejected-letter]="rejectedLetters().has(key.toUpperCase())">
+                {{ key }}</button>
+            }
+        </div>
+    }
+</div>

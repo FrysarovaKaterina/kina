@@ -1,0 +1,55 @@
+<div class="game-board">
+    <audio src="jump1.mp3" id="success-sound"></audio>
+    <audio src="victory.mp3" id="victory-sound"></audio>
+    <audio src="ooff3.mp3" id="invalid-sound"></audio>
+    <audio src="uh-oh.mp3" id="loser-sound"></audio>
+
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+
+    <div class="word-grid">
+    @for (row of board; track row; let rowIndex = $index){
+        <div class="board-row">
+            @for (letter of row; track $index){
+                <div class="letter-box" (click)="toggleLetterStatus(letter, $index)"
+                [class.error-flash]="errorMessage() && rowIndex === currentRow && $index === currentCol"
+                [class.possible-match]="possibleLetters().has(letter.toUpperCase()) ||
+                 sureLetters().has(letter.toUpperCase())"
+                [class.sure-match]="sureLetters().has(letter.toUpperCase())  && fixedLetters().get(letter.toUpperCase()) === $index"
+                [class.rejected-letter]="rejectedLetters().has(letter.toUpperCase())"
+                >
+                    {{ letter}}
+                </div>
+            }
+        </div>
+    }
+    </div>
+    <div class="score-board">
+        @for (scoreRow of score; track scoreRow){
+            <div class="score-row">
+                <div class="letter-score">{{ scoreRow[0] }}</div>
+                <div class="position-score">{{ scoreRow[1] }}</div>
+            </div>
+        }
+    </div>
+</div>  
+@if (errorMessage()) {
+    <div class="error-message">
+        {{ errorMessage() }}
+    </div>
+}
+@if (winner()) {
+    <div class="winner-message">
+        {{ winnerMessage }}
+    </div>
+}
+@if (loser()) {
+    <div class="loser-message">
+        {{ loserMessage }}
+    </div>
+}
+<app-keyboard (keyPress)="handleInput($event)"
+[possibleLetters]="possibleLetters()"
+[sureLetters]="sureLetters()"
+[rejectedLetters]="rejectedLetters()"
+[fixedLetters]="fixedLetters()"
+></app-keyboard>
