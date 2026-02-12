@@ -1,5 +1,9 @@
 # Kina
 
+This is a Czech version of the Quina word game which I created for all of my non-english speaking friends. It is available online at [kina](https://kina.ddns.net/).
+
+##Angular info
+
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.1.0.
 
 ## Development server
